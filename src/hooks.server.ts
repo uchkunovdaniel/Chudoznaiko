@@ -1,7 +1,7 @@
 import Pocketbase from 'pocketbase';
 
 export const handle = async ({event, resolve}) => {
-	event.locals.pb = new Pocketbase('http://127.0.0.1:8090');
+	event.locals.pb = new Pocketbase('http://207.154.201.253/');
 	event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 
 	if(event.locals.pb.authStore.isValid) {
