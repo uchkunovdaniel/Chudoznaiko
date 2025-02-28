@@ -1,0 +1,9 @@
+.idea/
+.svelte-kit/
+package
+node_modules/
+pb_data/
+pb_migrations/
+.env
+package-lock.json
+pocketbase.exe
