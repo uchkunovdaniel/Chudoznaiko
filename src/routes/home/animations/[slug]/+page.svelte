@@ -216,9 +216,9 @@
 			height: 2vw;
     }
 		.favouritebtn{
-			position: relative;
-			/*left: 43vw;*/
-			/*top: 4vw;*/
+			position: absolute;
+			left: 43vw;
+			top: 4vw;
 			width: fit-content;
 			height: 2vw;
 			display: flex;

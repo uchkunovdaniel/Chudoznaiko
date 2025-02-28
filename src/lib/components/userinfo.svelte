@@ -6,7 +6,7 @@
 
 </script>
 
-<div class="register" transition:fade={{duration:100}}>
+<div class="userinfo" transition:fade={{duration:100}}>
     <button id="closebtn" onclick="{showProfile}">
         <img class="close" src="{close}" alt="close"/>
     </button>
@@ -53,7 +53,7 @@
         display: block;
     }
 
-    .register{
+    .userinfo{
         position: absolute;
         display: flex;
         justify-content: center;
@@ -61,7 +61,7 @@
         flex-direction: column;
         height: 35vw;
         width: 35vw;
-        z-index: 10;
+        z-index: 110;
         top: 55%;
         transform: translateY(-50%);
         right: 6.5vw;
