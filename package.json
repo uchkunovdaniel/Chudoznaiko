@@ -1,4 +1,7 @@
 {
+	"engines": {
+		"node": "23.3.0"
+	},
 	"name": "chudoznaiko",
 	"version": "0.0.1",
 	"type": "module",
