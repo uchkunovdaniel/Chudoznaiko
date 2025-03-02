@@ -3,16 +3,26 @@
 	import './fonts.css';
 	import Mobile from '$lib/components/mobile.svelte';
 	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	let mobile = $state(false);
 
-	if(browser){
-		mobile = window.innerWidth < 768;
-		window.addEventListener('resize', () => {
+	onMount(() => {
+		if(browser){
 			mobile = window.innerWidth < 768;
-		});
+			window.addEventListener('resize', () => {
+				mobile = window.innerWidth < 768;
+			});
+		}
+	});
 
-	}
+	// if(browser){
+	// 	mobile = window.innerWidth < 768;
+	// 	window.addEventListener('resize', () => {
+	// 		mobile = window.innerWidth < 768;
+	// 	});
+	//
+	// }
 </script>
 <div class="noerror"></div>
 <style>
