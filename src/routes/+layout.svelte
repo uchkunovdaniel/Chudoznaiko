@@ -7,6 +7,7 @@
 	let mobile = $state(false);
 
 	if(browser){
+		mobile = window.innerWidth < 768;
 		window.addEventListener('resize', () => {
 			mobile = window.innerWidth < 768;
 		});
