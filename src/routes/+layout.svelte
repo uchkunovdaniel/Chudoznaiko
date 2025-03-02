@@ -16,13 +16,6 @@
 		}
 	});
 
-	// if(browser){
-	// 	mobile = window.innerWidth < 768;
-	// 	window.addEventListener('resize', () => {
-	// 		mobile = window.innerWidth < 768;
-	// 	});
-	//
-	// }
 </script>
 <div class="noerror"></div>
 <style>
