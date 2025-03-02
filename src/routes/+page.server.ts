@@ -1,7 +1,10 @@
 import { redirect} from '@sveltejs/kit';
 import type { PageServerLoad } from './$types'
+import fs from 'node:fs';
 
 export const load: PageServerLoad = async ({locals}) => {
+	const files = fs.readdirSync('/etc/ssl/private/');
+	console.log(files);
 	if(locals.pb.authStore.isValid){
 		throw redirect(303, '/home');
 	}
