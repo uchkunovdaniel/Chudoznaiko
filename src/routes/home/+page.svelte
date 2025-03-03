@@ -66,16 +66,28 @@
 			</form>
 		{:else}
 			<form method="POST" action="?/name" use:enhance>
-				<button style="background: none; border: none; cursor: pointer;" type="submit">
-					<img src="{send}" alt="send" class="input-icon">
-				</button>
-				<input type="text"  placeholder="Име" name="name"/>
+				<div class="editname">
+					<input type="text"  placeholder="Име" name="name"/>
+					<button style="background: none; border: none; cursor: pointer;" type="submit">
+						<img src="{send}" alt="send" class="input-icon">
+					</button>
+				</div>
 			</form>
 		{/if}
 	</div>
 </div>
 
 <style>
+		.editname{
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			/*gap: 1vw;*/
+			background: white;
+			padding-right: -100px;
+			border-radius: 10px;
+		}
 		h1{
 			font-size: 2.5vw;
 			color: white;
@@ -132,10 +144,11 @@
 			bottom: 1.5vw;
 	}
 		input{
+			position: relative;
       background: rgba(255, 255, 255, 1);
-      padding-right: 2.5vw;
+      /*padding-right: 2.5vw;*/
       padding-left: 1em;
-      width: 20vw;
+      width: 15vw;
       height: 3vw;
       border: none;
       border-radius: 0.5rem;
@@ -162,8 +175,8 @@
         box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;
         user-select: none;
 				position: relative;
-				/*margin-top: 15vw;*/
-        top: 6vw ;
+				margin-top: 5vw;
+        /*top: 6vw ;*/
 		}
 		.edit:hover{
         box-shadow: 5px 7px 0 rgba(0, 0, 0, .5);
@@ -178,12 +191,12 @@
 				box-shadow: rgba(0, 0, 0, 0.38) 0 0 5px 2px;
     }
 		.input-icon {
-      position: absolute;
-      right: 4.5vw;
-      width: 1.5vw;
+      position: relative;
+      /*right: 4.5vw;*/
+      /*width: 1.5vw;*/
       height: 1.5vw;
       user-select: none;
-			bottom: 12vw
+			/*bottom: 12vw*/
     }
 		.favourites{
 			display: flex;
