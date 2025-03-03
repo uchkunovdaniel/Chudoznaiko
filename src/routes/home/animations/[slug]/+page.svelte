@@ -73,13 +73,13 @@
 	</form>
 </div>
 </div>
-<div class='description'>
 <form method="POST" action="?/save" use:enhance>
-	<button class="favouritebtn" type="submit" name="id" value="{data.id}">
+	<button class="favbtn" type="submit" name="id" value="{data.id}">
 		Запази в любими
 		<img class="favourite" src="{save}" alt="save">
 	</button>
 </form>
+<div class='description'>
 	<p>{data.description}</p>
 </div>
 
@@ -215,8 +215,8 @@
 			width: 2vw;
 			height: 2vw;
     }
-		.favouritebtn{
-			position: absolute;
+		.favbtn{
+			position: relative;
 			left: 43vw;
 			top: 4vw;
 			width: fit-content;
