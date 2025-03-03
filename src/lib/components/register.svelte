@@ -13,15 +13,18 @@
         // eslint-disable-next-line no-undef
         let passwords = document.getElementsByClassName('input-field') as HTMLCollectionOf<HTMLInputElement>;
         let icon = document.getElementById('showPassword') as HTMLImageElement;
+        let icon2 = document.getElementById('showPassword2') as HTMLImageElement;
 
         for(const password of passwords){
             if (password.type === 'password'){
                 password.type = 'text';
                 icon.src = eye;
+                icon2.src = eye;
             }
             else if(password.type === 'text'){
                 password.type = 'password';
                 icon.src = hide;
+                icon2.src = hide;
             }
         }
     }
@@ -55,6 +58,9 @@
             <button class="input-icon" onclick="{showPassword}" aria-label="show password" style="background: none; border: none;" type="button"></button>
 
             <input bind:value={Password} required autocomplete="new-password" type="password" placeholder="Парола" class="input-field" id="password" name="password">
+
+            <img src="{hide}" alt="password" class="input-icon" id="showPassword2">
+            <button class="input-icon" onclick="{showPassword}" aria-label="show password" style="background: none; border: none;" type="button"></button>
 
             <input bind:value={PasswordConfirm} required autocomplete="new-password" type="password" placeholder="Потвърди парола" class="input-field" id="password" name="passwordConfirm">
         </form>
@@ -155,6 +161,10 @@
     }
     .input-icon:nth-child(3), .input-icon:nth-child(4) {
       top: 5.5vw;
+      cursor: pointer;
+    }
+    .input-icon:nth-child(6), .input-icon:nth-child(7) {
+      top: 10vw;
       cursor: pointer;
     }
 
