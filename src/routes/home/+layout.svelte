@@ -19,7 +19,7 @@
 </script>
 
 <header>
-	<button onclick="{() => goto('/home')}" style="margin-bottom: .5vw;background: none; border: none; outline: none; width: 15vw; height: 5vw; display: flex; align-items: baseline;">
+	<button onclick="{() => goto('/home')}" style="margin-bottom: .5vw;background: none; border: none; outline: none; width: 15vw; height: 5vw; display: flex; align-items: baseline; cursor: pointer">
 		<img src="{logo}" alt="Чудознайко" id="logo">
 	</button>
 	<button id="animations" class="nav-buttons" onclick="{() => goto('/home/animations')}">Анимации</button>
