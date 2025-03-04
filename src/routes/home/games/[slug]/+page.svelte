@@ -1,13 +1,19 @@
 <script lang="ts">
+	import Game1 from '$lib/components/game1.svelte';
+
 	let { data } = $props();
 
 </script>
 
 <div class="heading">
-	<h1>Образователни игри</h1>
+	<h1>{data.name}</h1>
 </div>
 
-<p>{data.name}</p>
+{#if data.index === 1}
+	<Game1 />
+{:else}
+	<p>Game not found</p>
+{/if}
 
 <style>
 		.heading {
@@ -24,17 +30,18 @@
 			left: 25vw;
 	}
 		h1{
-			font-size: 2.5vw;
+			font-size: 2vw;
 			color: white;
 			font-family: "transforma", sans-serif;
 			font-weight: 900;
-	}
+			user-select: none;
+		}
 		p{
-			font-size: 3vw;
+			font-size: 2vw;
 			color: #373737;
-			font-family: "transforma_light", sans-serif;
+			font-family: "transforma", sans-serif;
 			font-weight: 900;
+			user-select: none;
 			text-align: center;
-			margin-top: 10vh;
 		}
 </style>
