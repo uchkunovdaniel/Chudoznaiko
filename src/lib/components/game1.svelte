@@ -1,21 +1,36 @@
 <script lang="ts">
+    import bear from "/src/lib/assets/bear.svg";
+    import otter from "/src/lib/assets/otter.svg";
+    import squirrel from "/src/lib/assets/squirrel.svg";
+    import acorn from "/src/lib/assets/acorn.svg";
+    import honey from "/src/lib/assets/dani.svg";
+    import worm from "/src/lib/assets/worm.svg";
+    import { browser } from '$app/environment';
+
     interface AnimalPair {
-        animal: string;
-        food: string;
+        animal: {
+            name: string;
+            file: string;
+        };
+        food: {
+            name: string;
+            file: string;
+        };
     }
 
     const ANIMAL_PAIRS: AnimalPair[] = [
-        { animal: 'Видра', food: 'Червей' },
-        { animal: 'Катерица', food: 'Жълъд' },
-        { animal: 'Мечка', food: 'Мед' },
+        { animal: { name: 'Видра', file: otter }, food: { name: 'Червей', file: worm } },
+        { animal: { name: 'Катерица', file: squirrel }, food: { name: 'Жълъд', file: acorn } },
+        { animal: { name: 'Мечка', file: bear }, food: { name: 'Мед', file: honey } },
     ];
 
-    let animals: string[] = [];
-    let foods: string[] = [];
-    let matchedPairs: string[] = [];
-    let selectedAnimal: string | null = null;
-    let selectedFood: string | null = null;
-    let error: boolean = false;
+    // let animals: string[] = $state([]);
+    // let foods: string[] = $state([]);
+    let matchedPairs: string[] = $state([]);
+    let selectedAnimal: string | null = $state(null);
+    let selectedFood: string | null = $state(null);
+    let error: boolean = $state(false);
+    let shuffledPairs: AnimalPair[] = $state([]);
 
     function shuffle<T>(array: T[]): T[] {
         const shuffled = [...array];
@@ -27,10 +42,10 @@
     }
 
     function initializeGame(): void {
-        const shuffledPairs = shuffle([...ANIMAL_PAIRS]);
-
-        animals = shuffledPairs.map(pair => pair.animal);
-        foods = shuffle([...ANIMAL_PAIRS.map(pair => pair.food)]);
+        shuffledPairs = shuffle([...ANIMAL_PAIRS]);
+         console.log(shuffledPairs);
+        // animals = shuffledPairs.map(pair => pair.animal.name);
+        // foods = shuffle([...ANIMAL_PAIRS.map(pair => pair.food)]);
         matchedPairs = [];
         selectedAnimal = null;
         selectedFood = null;
@@ -49,7 +64,7 @@
 
         if (selectedAnimal && selectedFood) {
             const isValidPair = ANIMAL_PAIRS.some(
-                pair => pair.animal === selectedAnimal && pair.food === selectedFood
+                pair => pair.animal.name === selectedAnimal && pair.food.name === selectedFood
             );
 
             if (isValidPair) {
@@ -67,7 +82,9 @@
         }
     }
 
-    initializeGame();
+    if(browser){
+        initializeGame();
+    }
 </script>
 
 
@@ -75,58 +92,69 @@
     {#if matchedPairs.length === ANIMAL_PAIRS.length * 2}
         <div class="win-message">
             <h2>Поздравления! Печелиш! 🎉</h2>
-            <button on:click={initializeGame}>Играй пак</button>
+            <button onclick={initializeGame} style="height: 5vw">Играй пак</button>
         </div>
     {:else}
-        <div class="columns">
             <div class="animals">
-                {#each animals as animal}
+                {#each shuffledPairs as pair}
                     <button
-                        class:selected={selectedAnimal === animal}
-                        class:matched={matchedPairs.includes(animal)}
-                        class:shake={error && selectedAnimal === animal}
-                        on:click={() => handleAnimalClick(animal)}
-                    >
-                        {animal}
+                        class:selected={selectedAnimal === pair.animal.name}
+                        class:matched={matchedPairs.includes(pair.animal.name)}
+                        class:shake={error && selectedAnimal === pair.animal.name}
+                        onclick={() => handleAnimalClick(pair.animal.name)}>
+
+                        <img class="image" src="{pair.animal.file}" alt="{pair.animal.name}" />
+                        {pair.animal.name}
                     </button>
                 {/each}
             </div>
 
             <div class="foods">
-                {#each foods as food}
+                {#each shuffledPairs as pair}
                     <button
-                        class:selected={selectedFood === food}
-                        class:matched={matchedPairs.includes(food)}
-                        class:shake={error && selectedFood === food}
-                        on:click={() => handleFoodClick(food)}
+                        class:selected={selectedFood === pair.food.name}
+                        class:matched={matchedPairs.includes(pair.food.name)}
+                        class:shake={error && selectedFood === pair.food.name}
+                        onclick={() => handleFoodClick(pair.food.name)}
                     >
-                        {food}
+                        <img class="image" src="{pair.food.file}" alt="{pair.food.name}" style="width: fit-content" />
+                        {pair.food.name}
                     </button>
                 {/each}
             </div>
-        </div>
     {/if}
 </div>
 
 <style>
+    .image{
+        display: block;
+        width: 11vw;
+        height: 11vw;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .animals, .foods{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
     .game-container {
-        max-width: 800px;
-        margin: 2rem auto;
+        max-width: fit-content;
+        max-height: 500px;
+        margin: 10rem auto;
         padding: 20px;
         text-align: center;
     }
 
-    .columns {
-        display: flex;
-        justify-content: space-around;
-        margin: 2rem 0;
-    }
-
-
     button {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         margin: 10px;
-        padding: 15px 25px;
+        gap: 1vw;
+        /*padding: 15px 25px;*/
         font-size: 18px;
         cursor: pointer;
         background-color: #ffffff;
@@ -134,7 +162,11 @@
         border-radius: 8px;
         transition: all 0.3s ease;
 				width: 13vw;
+        height: 18vw;
 				font-family: transforma, sans-serif;
+        user-select: none;
+        text-align: center;
+
     }
 
     button.selected {

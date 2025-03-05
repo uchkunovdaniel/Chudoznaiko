@@ -25,7 +25,7 @@
 	<button id="animations" class="nav-buttons" onclick="{() => goto('/home/animations')}">Анимации</button>
 	<button id="games" class="nav-buttons" onclick="{() => goto('/home/games')}">Образователни игри</button>
 	<button id="about" class="nav-buttons" onclick="{() => goto('/home/about')}">За нас</button>
-	<input type="text" id="search" class="nav-buttons" placeholder="Търсене" bind:value={Search}>
+	<input type="text" id="search" class="nav-buttons" placeholder="Търсене" bind:value={Search} autocomplete="off">
 	<img src="{search}" alt="search" id="search-btn">
 	<button id="userbtn" onclick="{showProfile}">
 		<img id="user" src="{user}" alt="user"/>
