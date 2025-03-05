@@ -47,7 +47,7 @@
 			<p>Образователните игри са лесни за навигиране от деца, като развиват тяхната логика, креативност и знания.</p>
 		</div>
 		<button class="hidden" onclick="{() => {window.location.href = `/home/games/`}}" aria-label="animation"></button>
-		<img src="{data.thumbnailsa[0]}" alt="animations" style="width: 80%; height: 40%; border-radius: 1rem;">
+		<img src="{data.thumbnailsg[0]}" alt="animations" style="width: 80%; height: 40%; border-radius: 1rem;">
 	</div>
 	<div class="profile">
 		<img class="avatar" src="{pfp}" alt="avatar">
