@@ -1,5 +1,5 @@
 <h1>
-	Download the mobile app!
+	Изтегли мобилното приложение!
 </h1>
 
 <style>
