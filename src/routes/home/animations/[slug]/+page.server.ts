@@ -32,13 +32,7 @@ export const actions = {
 		const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
 		const result = await model.generateContent([
-			{
-				inlineData: {
-					data: Buffer.from(imageResp).toString("base64"),
-					mimeType: "video/mp4",
-				},
-			},
-			`Отговори на бълграски. ${data.get('prompt') as string}`
+			`Отговори като за малко дете: ${data.get('prompt') as string}`
 		]);
 		return {
 			response: result.response.text()

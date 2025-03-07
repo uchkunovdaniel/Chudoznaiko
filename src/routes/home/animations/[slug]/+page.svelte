@@ -95,7 +95,7 @@
 		top: 1vw;
 	}
 	video {
-		width: fit-content;
+		width: 50vw;
 		height: 28vw;
 		/*height: fit-content;*/
 		border-radius: 10px;
