@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Game1 from '$lib/components/game1.svelte';
+	import save from '$lib/assets/save.svg';
+	import { enhance } from '$app/forms';
 
 	let { data } = $props();
 
@@ -11,6 +13,12 @@
 
 {#if data.index === 1}
 	<Game1 />
+	<form method="POST" action="?/save" use:enhance>
+	<button class="favbtn" type="submit" name="id" value="{data.id}">
+		Запази в любими
+		<img class="favourite" src="{save}" alt="save">
+	</button>
+</form>
 {:else}
 	<p>Game not found</p>
 {/if}
@@ -43,5 +51,21 @@
 			font-weight: 900;
 			user-select: none;
 			text-align: center;
+		}
+		.favbtn{
+			position: relative;
+			left: 56vw;
+			top: -14vw;
+			width: fit-content;
+			height: 2vw;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: transforma, sans-serif;
+			border: none;
+			border-radius: 5px;
+			background: none;
+			cursor: pointer;
+			color: #373737;
 		}
 </style>

@@ -12,7 +12,8 @@ export const load = async ({ params, locals }) => {
 			name: names[parseInt(params.slug)-1],
 			video: locals.pb.files.getURL(games[parseInt(params.slug)-1], thumbnails[parseInt(params.slug)-1]),
 			description: games[parseInt(params.slug)-1].description,
-			index: parseInt(params.slug)
+			index: parseInt(params.slug),
+			id: games[parseInt(params.slug)-1].id,
 		};
 	}
 	throw error(404);
