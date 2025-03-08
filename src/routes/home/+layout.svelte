@@ -5,6 +5,7 @@
 	import user from '$lib/assets/user.svg';
 	import UserInfo from '$lib/components/userinfo.svelte';
 	import { goto } from '$app/navigation'
+	import { enhance } from '$app/forms';
 
 	let visible = $state(false);
 	function showProfile(){
@@ -25,11 +26,16 @@
 	<button id="animations" class="nav-buttons" onclick="{() => goto('/home/animations')}">Анимации</button>
 	<button id="games" class="nav-buttons" onclick="{() => goto('/home/games')}">Образователни игри</button>
 	<button id="about" class="nav-buttons" onclick="{() => goto('/home/about')}">За нас</button>
-	<input type="text" id="search" class="nav-buttons" placeholder="Търсене" bind:value={Search} autocomplete="off">
-	<img src="{search}" alt="search" id="search-btn">
+	<form id="searchform" action="/home?/search" method="post" use:enhance>
+		<input type="text" id="search" class="nav-buttons" placeholder="Търсене" bind:value={Search} autocomplete="off" name="search"/>
+	</form>
+	<button type="submit" form="searchform" style="background: none; border: none">
+		<img src="{search}" alt="search" id="search-btn">
+	</button>
 	<button id="userbtn" onclick="{showProfile}">
 		<img id="user" src="{user}" alt="user"/>
 	</button>
+
 </header>
 
 {#if visible}
