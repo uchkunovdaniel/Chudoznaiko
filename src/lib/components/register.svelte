@@ -74,7 +74,7 @@
         </div>
         <button id="registerbtn" type="submit" form="form">Регистрация</button>
 
-        <button onclick="{() => {login = true}}" style="background: none; border: none;" id="loginbtn">Вече имаш акаунт? <b>Влез тук</b></button>
+        <button onclick="{() => {login = true}}" style="background: none; border: none; cusrsor: pointer;" id="loginbtn">Вече имаш акаунт? <b>Влез тук</b></button>
     </div>
 {/if}
 <style>
