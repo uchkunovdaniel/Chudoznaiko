@@ -105,6 +105,7 @@
 				/*margin-left: 8vw;*/
 				position: relative;
 				right: -3vw;
+				cursor: text;
 		}
 		#search-btn{
 				width: 3vw;
@@ -121,6 +122,7 @@
         border: none;
         outline: none;
 				user-select: none;
+				cursor: pointer;
     }
 </style>
 
