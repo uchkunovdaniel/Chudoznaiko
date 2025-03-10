@@ -112,5 +112,6 @@
 			text-align: justify;
 			line-height: 4vh;
 			font-size: 3vh;
+			user-select: none;
 	}
 </style>

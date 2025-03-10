@@ -14,10 +14,10 @@
 {#if data.index === 1}
 	<Game1 />
 	<form method="POST" action="?/save" use:enhance>
-	<button class="favbtn" type="submit" name="id" value="{data.id}">
-		Запази в любими
-		<img class="favourite" src="{save}" alt="save">
-	</button>
+<!--	<button class="favbtn" type="submit" name="id" value="{data.id}">-->
+<!--		Запази в любими-->
+<!--		<img class="favourite" src="{save}" alt="save">-->
+<!--	</button>-->
 </form>
 {:else}
 	<p>Game not found</p>
