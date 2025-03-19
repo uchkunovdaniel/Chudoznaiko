@@ -18,3 +18,12 @@ export const load = async ({ params, locals }) => {
 	}
 	throw error(404);
 };
+
+export const actions = {
+	save: async ({request, locals}) => {
+		const data = await request.formData();
+		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {
+			'favourite_games+': data.get('id') as string
+		})
+	}
+ 	}

@@ -54,8 +54,13 @@
 		{#if data.user?.name}
 			<h1 id="name">{data.user.name}</h1>
 			<div class="favourites">
-				{#each data.favourites.thumbnails as fav, i}
-					<button onclick="{() => {window.location.href = `/home/animations/${data.favourites.ids[i]}`}}" aria-label="animation" style="border: none; background: none; cursor: pointer;">
+				{#each data.favourites.thumbnails.animations as fav, i}
+					<button onclick="{() => {window.location.href = `/home/animations/${data.favourites.ids.animations[i]}`}}" aria-label="animation" style="border: none; background: none; cursor: pointer;">
+						<img src="{fav}" alt="favourite" style="width: 5vw; height: 5vw; border-radius: 1em;">
+					</button>
+				{/each}
+				{#each data.favourites.thumbnails.games as fav, i}
+					<button onclick="{() => {window.location.href = `/home/games/${data.favourites.ids.games[i]}`}}" aria-label="game" style="border: none; background: none; cursor: pointer;">
 						<img src="{fav}" alt="favourite" style="width: 5vw; height: 5vw; border-radius: 1em;">
 					</button>
 				{/each}

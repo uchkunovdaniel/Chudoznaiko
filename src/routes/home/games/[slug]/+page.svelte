@@ -13,17 +13,30 @@
 
 {#if data.index === 1}
 	<Game1 />
+	<div class="description">{data.description}</div>
 	<form method="POST" action="?/save" use:enhance>
-<!--	<button class="favbtn" type="submit" name="id" value="{data.id}">-->
-<!--		Запази в любими-->
-<!--		<img class="favourite" src="{save}" alt="save">-->
-<!--	</button>-->
+	<button class="favbtn" type="submit" name="id" value="{data.id}">
+		Запази в любими
+		<img class="favourite" src="{save}" alt="save">
+	</button>
 </form>
 {:else}
 	<p>Game not found</p>
 {/if}
-
 <style>
+		.description{
+				width: 45vw;
+				position: absolute;
+				right: 2vw;
+				top: 20vw;
+				font-size: 1.3vw;
+				text-align: justify;
+				background: var(--accent);
+				padding: 1vw;
+				border-radius: 10px;
+				font-family: "transforma", sans-serif;
+				color: #373737;
+		}
 		.heading {
 			display: flex;
 			justify-content: center;
@@ -52,10 +65,15 @@
 			user-select: none;
 			text-align: center;
 		}
+		.favourite{
+			width: 2vw;
+			height: 2vw;
+    }
 		.favbtn{
-			position: relative;
-			left: 56vw;
-			top: -14vw;
+			position: absolute;
+			left: 84vw;
+			top: 46vw;
+			/*top: 4vw;*/
 			width: fit-content;
 			height: 2vw;
 			display: flex;

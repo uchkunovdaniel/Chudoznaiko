@@ -41,7 +41,7 @@ export const actions = {
 	save: async ({ request, locals }) => {
 		const data = await request.formData();
 		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {
-			'favourites+': data.get('id') as string
+			'favourite_games+': data.get('id') as string
 		})
 
 	}

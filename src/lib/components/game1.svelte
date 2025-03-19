@@ -141,7 +141,7 @@
     .game-container {
         max-width: fit-content;
         max-height: 500px;
-        margin: 10rem auto;
+        margin: 15vw 2vw;
         padding: 20px;
         text-align: center;
     }
