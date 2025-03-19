@@ -9,10 +9,10 @@ export const load = async ({locals}) => {
 	const imgsg = games.map(({thumbnail}) => thumbnail);
 	const thumbnailsg = imgsg.map((img, i) => locals.pb.files.getURL(games[i], img));
 
-	const fav_videos = locals.pb.authStore.record?.favourite_aniimations || [];
+	const fav_videos = locals.pb.authStore.record?.favourite_animations || [];
 	const favourite_animations = await Promise.all(fav_videos.map((id: string) => locals.pb.collection('animations').getOne(id)));
 	const fav_a_imgs = favourite_animations.map(({thumbnail}) => thumbnail);
-	const fav_a_videos = fav_a_imgs.map((id) => id[0]);
+	const fav_a_ids = fav_a_imgs.map((id) => id[0]);
 	const fav_a_thumbnails = fav_a_imgs.map((img, i) => locals.pb.files.getURL(favourite_animations[i], img));
 
 	const fav_games = locals.pb.authStore.record?.favourite_games || [];
@@ -21,7 +21,7 @@ export const load = async ({locals}) => {
 	const fav_g_ids = fav_g_imgs.map((id) => id[0]);
 	const fav_g_thumbnails = fav_g_imgs.map((img, i) => locals.pb.files.getURL(favourite_games[i], img));
 
-	return { animations: animations, thumbnailsa: thumbnailsa, games: games, thumbnailsg: thumbnailsg, favourites: { thumbnails: { animations: fav_a_thumbnails, games: fav_g_thumbnails }, ids: { animations: fav_a_videos, games: fav_g_ids}}};
+	return { animations: animations, thumbnailsa: thumbnailsa, games: games, thumbnailsg: thumbnailsg, favourites: { thumbnails: { animations: fav_a_thumbnails, games: fav_g_thumbnails }, ids: { animations: fav_a_ids, games: fav_g_ids}}};
 }
 
 export const actions = {

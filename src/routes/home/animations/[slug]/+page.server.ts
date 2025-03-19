@@ -21,10 +21,7 @@ export const load = async ({ params, locals }) => {
 };
 
 export const actions = {
-	prompt: async ({ request, locals, params }) => {
-		const animations = await locals.pb.collection('animations').getFullList();
-		const videos = animations.map(({ video }) => video);
-		const videourl = locals.pb.files.getURL(animations[parseInt(params.slug) - 1], videos[parseInt(params.slug) - 1]);
+	prompt: async ({ request }) => {
 
 		const data = await request.formData();
 		const genAI = new GoogleGenerativeAI(GEMINI_KEY);
