@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Game1 from '$lib/components/game1.svelte';
 	import save from '$lib/assets/save.svg';
+	import saved from '$lib/assets/saved.svg';
 	import { enhance } from '$app/forms';
 
 	let { data } = $props();
@@ -15,9 +16,9 @@
 	<Game1 />
 	<div class="description">{data.description}</div>
 	<form method="POST" action="?/save" use:enhance>
-	<button class="favbtn" type="submit" name="id" value="{data.id}">
-		Запази в любими
-		<img class="favourite" src="{save}" alt="save">
+		<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_games.includes(data.id) ? 'var(--main)' : '#373737'}">
+			{data.user?.favourite_games.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
+		<img class="favourite" src="{data.user?.favourite_games.includes(data.id) ? saved : save}" alt="save">
 	</button>
 </form>
 {:else}
@@ -71,7 +72,7 @@
     }
 		.favbtn{
 			position: absolute;
-			left: 84vw;
+			left: 83vw;
 			top: 46vw;
 			/*top: 4vw;*/
 			width: fit-content;
