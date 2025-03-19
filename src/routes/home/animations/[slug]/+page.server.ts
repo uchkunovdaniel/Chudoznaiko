@@ -25,7 +25,6 @@ export const actions = {
 		const animations = await locals.pb.collection('animations').getFullList();
 		const videos = animations.map(({ video }) => video);
 		const videourl = locals.pb.files.getURL(animations[parseInt(params.slug) - 1], videos[parseInt(params.slug) - 1]);
-		const imageResp = await fetch(videourl).then((response) => response.arrayBuffer());
 
 		const data = await request.formData();
 		const genAI = new GoogleGenerativeAI(GEMINI_KEY);
@@ -41,7 +40,7 @@ export const actions = {
 	save: async ({ request, locals }) => {
 		const data = await request.formData();
 		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {
-			'favourite_games+': data.get('id') as string
+			'favourite_animations+': data.get('id') as string
 		})
 
 	}
