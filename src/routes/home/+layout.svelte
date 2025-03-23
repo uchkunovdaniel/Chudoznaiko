@@ -87,6 +87,7 @@
 		.nav-buttons:hover{
 			outline: 2px solid white;
 		}
+
 		#search{
 				align-items: center;
 				width: 15vw;
