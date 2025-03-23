@@ -2,7 +2,7 @@
 	Изтегли мобилното приложение!
 </h1>
 
-<a href="https://github.com/uchkunovdaniel/Chudoznaiko/releases/download/v1/default.apk">Изтегли</a>
+<a href="https://github.com/uchkunovdaniel/Chudoznaiko/releases/download/v1/chudoznaiko.apk">Изтегли</a>
 
 <style>
 	h1 {
