@@ -10,7 +10,6 @@
 			(btn as HTMLButtonElement).style.outline= 'none';
 		}
 		(document.getElementsByClassName('nav-buttons')[0] as HTMLButtonElement).style.outline = '2px solid white';
-
 	}
 </script>
 

@@ -4,18 +4,21 @@
 	import '../fonts.css';
 	import user from '$lib/assets/user.svg';
 	import UserInfo from '$lib/components/userinfo.svelte';
-	import { goto } from '$app/navigation'
+	import { afterNavigate, goto } from '$app/navigation';
 	import { enhance } from '$app/forms';
+	import { visible } from '$lib/visible';
 
-	let visible = $state(false);
-	function showProfile(){
-		visible = !visible;
-	}
 
 	let { children, data } = $props();
 
-	let Search: string = $state('');
+	function showProfile(){
+		visible.update(v => !v);
+	}
 
+	afterNavigate(() => {
+		visible.update(() => false);
+	})
+	let Search: string = $state('');
 
 </script>
 
@@ -38,7 +41,7 @@
 
 </header>
 
-{#if visible}
+{#if $visible}
 	<UserInfo {showProfile} {data} />
 {/if}
 
