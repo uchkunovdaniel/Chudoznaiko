@@ -18,7 +18,7 @@
 </div>
 <div class="about">
     <div class="description">
-        <p>ЧудоЗнайко е интерактивна образователна платформа, създадена за любопитните малки откриватели на възраст от 3 до 7 години. Чрез завладяващи анимации, увлекателни мини-игри и приятелски настроен чатбот, децата лесно и забавно научават повече за света около тях. Темите обхващат природни явления, научни концепции, социални умения и ежедневни ситуации, представени по достъпен и интерактивен начин. С ЧудоЗнайко ученето се превръща в игра, а сложните въпроси получават ясни и забавни отговори, които развиват детското въображение, логика и знания.</p>
+        <p>ЧудоЗнайко е интерактивна образователна платформа за деца от 3 до 7 години. Чрез анимации, мини-игри и чатбот, децата научават за природни явления, научни концепции, социални умения и ежедневни ситуации. Ученето става игра, а сложните въпроси получават ясни и забавни отговори, развиващи въображението, логиката и знанията на децата.</p>
     </div>
     <button class="start" id="start" onclick="{() => {showLogin();window.scrollTo(0,0)}}">Да започнем</button>
 </div>
@@ -84,7 +84,7 @@
         height: 4vw;
         border: none;
         outline: none;
-        font-family: "transforma", sans-serif;
+        font-family: "transforma_regular", sans-serif;
         font-weight: 900;
         background: white;
         /*background: linear-gradient(var(--main) 0%, var(--second-purple) 100%);*/
@@ -121,15 +121,15 @@
         align-items: center;
         flex-direction: column;
         background: #ffffff;
-        font-family: 'transforma', sans-serif;
+        font-family: 'transforma_regular', sans-serif;
         color: #373737;
         font-size: 1.3vw;
-        width: 40vw;
-        height: 24vw;
+        width: 37vw;
+        height: 18vw;
         position: relative;
         border-radius: 10px;
         padding: 1vw;
-        text-align: justify;
+        text-align: left;
         transition: ease 0.25s;
         box-shadow: 7px 7px 0 rgba(0, 0, 0, .6);
     }
@@ -139,7 +139,7 @@
         /*left: 65vw;*/
         width: 15vw;
         height: 5vw;
-        color: var(--main);
+        /*color: var(--main);*/
         background: white;
     }
 </style>

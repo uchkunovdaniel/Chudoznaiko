@@ -61,7 +61,7 @@
         flex-direction: column;
         height: 35vw;
         width: 35vw;
-        z-index: 110;
+        z-index: 1100;
         top: 55%;
         transform: translateY(-50%);
         right: 6.5vw;

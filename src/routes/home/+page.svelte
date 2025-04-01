@@ -35,7 +35,9 @@
 	<div class="animations">
 		<h1>Анимации</h1>
 		<div class="ai">
-			<p>Цветните и забавни интерактивни анимации представят научни и социални теми достъпно, забавно и образователно за малките деца.</p>
+			<p>
+				Цветните анимации представят научни и социални теми забавно и образователно за децата.
+			</p>
 		</div>
 		<button class="hidden" onclick="{() => {window.location.href = `/home/animations/`}}" aria-label="animation"></button>
 		<img src="{data.thumbnailsa[0]}" alt="animations" style="width: 80%; height: 40%; border-radius: 1rem;">
@@ -135,7 +137,7 @@
 		p{
 			font-size: 1.5vw;
 			font-family: "transforma_light", sans-serif;
-			text-align: justify;
+			text-align: left;
 		}
 		.hidden{
 			position: absolute;

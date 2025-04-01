@@ -58,7 +58,15 @@
 		<source src="{data.video}" type="video/mp4">
 		<track src="" kind="captions">
 	</video>
-<div class="text">
+	{#if visible}
+				<div class="response" in:slideFromBottom={{duration: 500}} out:slideToBottom={{duration: 500}}>
+					<img src="{closeb}" alt="closeb" class="input-icon" style="width: 1vw; height: 1vw; position: absolute; right: 1vw; top: 1vw;">
+					<button aria-label="close" style="background: none; border: none; cursor: pointer; position: absolute; right: 0; top: 0; width:3vw; height: 3vw" onclick={() => visible = false}></button>
+					<span>ЧудоБот</span>
+					{form?.response}
+				</div>
+	{/if}
+	<div class="text">
 	<div class="description">
 		<p>{data.description}</p>
 	</div>
@@ -67,14 +75,6 @@
 			<img src="{send}" alt="send" class="input-icon">
 		</button>
 		<input id='prompt' type="text" placeholder="Попитай нашия помощник" name="prompt" autocomplete="off">
-		{#if visible}
-			<div class="response" in:slideFromBottom={{duration: 500}} out:slideToBottom={{duration: 500}}>
-				<img src="{closeb}" alt="closeb" class="input-icon" style="width: 1vw; height: 1vw; position: absolute; right: 1vw; top: 1vw;">
-				<button aria-label="close" style="background: none; border: none; cursor: pointer; position: absolute; right: 0; top: 0; width:3vw; height: 3vw" onclick={() => visible = false}></button>
-				<span>ЧудоБот</span>
-				{form?.response}
-			</div>
-		{/if}
 	</form>
 </div>
 </div>
@@ -147,9 +147,9 @@
 	.response{
 			padding: 1vw;
 			position: absolute;
-			top: 12.7vw;
+			/*top: 12.7vw;	*/
 			width: 28vw;
-			height: 24vw;
+			height: 44vh;
 			background: rgba(255, 255, 255, 1);
 			border-radius: 0.5rem;
 			box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;
@@ -159,6 +159,8 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			z-index: 1;
+			right: 6.69vw;
 	}
 
 	input:focus + .response{
@@ -186,6 +188,7 @@
       user-select: none;
 			/*top: 4vw;*/
       box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;
+			z-index: 1000;
 		/*background: var(--accent)	*/
 	}
 	.text{

@@ -103,7 +103,7 @@
                     onclick={() => handleAnimalClick(pair.animal.name)}>
 
                     <img class="image" src="{pair.animal.file}" alt="{pair.animal.name}" />
-                    {pair.animal.name}
+                    <!--{pair.animal.name}-->
                 </button>
             {/each}
         </div>
@@ -116,8 +116,8 @@
                     class:shake={error && selectedFood === pair.food.name}
                     onclick={() => handleFoodClick(pair.food.name)}
                 >
-                    <img class="image" src="{pair.food.file}" alt="{pair.food.name}" style="width: fit-content" />
-                    {pair.food.name}
+                    <img class="imagef" src="{pair.food.file}" alt="{pair.food.name}" style="width: fit-content" />
+                    <!--{pair.food.name}-->
                 </button>
             {/each}
         </div>
@@ -129,6 +129,14 @@
         display: block;
         width: 11vw;
         height: 11vw;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .imagef{
+        display: block;
+        width: 5vw;
+        height: 5vw;
         margin-right: auto;
         margin-left: auto;
     }

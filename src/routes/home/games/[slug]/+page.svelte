@@ -35,7 +35,7 @@
 				background: var(--accent);
 				padding: 1vw;
 				border-radius: 10px;
-				font-family: "transforma", sans-serif;
+				font-family: "transforma_regular", sans-serif;
 				color: #373737;
 		}
 		.heading {
