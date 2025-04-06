@@ -16,7 +16,7 @@
 	<Game1 />
 	<div class="description">{data.description}</div>
 	<form method="POST" action="{data.user?.favourite_games.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
-		<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_games.includes(data.id) ? 'var(--main)' : '#373737'}">
+		<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_games.includes(data.id) ? 'var(--main)' : '#373737'}; left: {data.user?.favourite_games.includes(data.id) ? '80.5vw' : '82vw'}">
 			{data.user?.favourite_games.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
 		<img class="favourite" src="{data.user?.favourite_games.includes(data.id) ? saved : save}" alt="save">
 	</button>
@@ -26,9 +26,9 @@
 {/if}
 <style>
 		.description{
-				width: 45vw;
+				width: 35vw;
 				position: absolute;
-				right: 2vw;
+				right: 5vw;
 				top: 20vw;
 				font-size: 1.3vw;
 				text-align: justify;
@@ -72,8 +72,8 @@
     }
 		.favbtn{
 			position: absolute;
-			left: 83vw;
-			top: 46vw;
+			left: 82vw;
+			top: 41vw;
 			/*top: 4vw;*/
 			width: fit-content;
 			height: 2vw;
