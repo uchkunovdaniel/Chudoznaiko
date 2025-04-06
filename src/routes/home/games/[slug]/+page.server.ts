@@ -25,5 +25,11 @@ export const actions = {
 		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {
 			'favourite_games+': data.get('id') as string
 		})
+	},
+	delete: async ({request, locals}) => {
+		const data = await request.formData();
+		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {
+			'favourite_games-': data.get('id') as string
+		})
 	}
  	}

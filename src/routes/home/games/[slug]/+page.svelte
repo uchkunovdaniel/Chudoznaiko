@@ -15,7 +15,7 @@
 {#if data.index === 1}
 	<Game1 />
 	<div class="description">{data.description}</div>
-	<form method="POST" action="?/save" use:enhance>
+	<form method="POST" action="{data.user?.favourite_games.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
 		<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_games.includes(data.id) ? 'var(--main)' : '#373737'}">
 			{data.user?.favourite_games.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
 		<img class="favourite" src="{data.user?.favourite_games.includes(data.id) ? saved : save}" alt="save">

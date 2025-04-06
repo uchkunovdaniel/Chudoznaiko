@@ -3,6 +3,7 @@
 	import { enhance } from '$app/forms';
 	import send from '$lib/assets/send.svg';
 	import save from '$lib/assets/save.svg';
+	import saved from '$lib/assets/saved.svg';
 	import closeb from '$lib/assets/closeb.svg';
 	// import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -61,9 +62,9 @@
 	{#if visible}
 				<div class="response" in:slideFromBottom={{duration: 500}} out:slideToBottom={{duration: 500}}>
 					<img src="{closeb}" alt="closeb" class="input-icon" style="width: 1vw; height: 1vw; position: absolute; right: 1vw; top: 1vw;">
-					<button aria-label="close" style="background: none; border: none; cursor: pointer; position: absolute; right: 0; top: 0; width:3vw; height: 3vw" onclick={() => visible = false}></button>
+					<button aria-label="close" style="background: none; border: none; cursor: pointer; position: absolute; right: 0; top: 0vw; width:1.5vw; height: 3vw; z-index: 1011" onclick={() => visible = false}></button>
 					<span>ЧудоБот</span>
-					{form?.response}
+					<div style="padding-top: 70vh">{form?.response}</div>
 				</div>
 	{/if}
 	<div class="text">
@@ -78,10 +79,10 @@
 	</form>
 </div>
 </div>
-<form method="POST" action="?/save" use:enhance>
-	<button class="favbtn" type="submit" name="id" value="{data.id}">
-		Запази в любими
-		<img class="favourite" src="{save}" alt="save">
+<form method="POST" action="{data.user?.favourite_animations.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
+	<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_animations.includes(data.id) ? 'var(--main)' : '#373737'}">
+		{data.user?.favourite_animations.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
+		<img class="favourite" src="{data.user?.favourite_animations.includes(data.id) ? saved : save}" alt="save">
 	</button>
 </form>
 
@@ -149,7 +150,7 @@
 			position: absolute;
 			/*top: 12.7vw;	*/
 			width: 28vw;
-			height: 44vh;
+			height: 45vh;
 			background: rgba(255, 255, 255, 1);
 			border-radius: 0.5rem;
 			box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;
@@ -161,6 +162,7 @@
 			align-items: center;
 			z-index: 1;
 			right: 6.69vw;
+			overflow-y: auto;
 	}
 
 	input:focus + .response{
@@ -207,7 +209,7 @@
       height: 1.5vw;
       user-select: none;
 			top: 1.7vw;
-			z-index: 100;
+			z-index: 1010;
     }
 		.favourite{
 			width: 2vw;
