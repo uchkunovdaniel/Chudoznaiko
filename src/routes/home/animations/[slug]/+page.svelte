@@ -64,7 +64,7 @@
 					<img src="{closeb}" alt="closeb" class="input-icon" style="width: 1vw; height: 1vw; position: absolute; right: 1vw; top: 1vw;">
 					<button aria-label="close" style="background: none; border: none; cursor: pointer; position: absolute; right: 0; top: 0vw; width:1.5vw; height: 3vw; z-index: 1011" onclick={() => visible = false}></button>
 					<span>ЧудоБот</span>
-					<div style="padding-top: 70vh">{form?.response}</div>
+					<div>{form?.response}</div>
 				</div>
 	{/if}
 	<div class="text">
