@@ -72,7 +72,7 @@
 <!--        </button>-->
     </form>
     <button id="loginbtn" type="submit" form="form">Влез</button>
-    <button onclick="{() => {register = true}}" style="background: none; border: none; cursor: pointer;" id="registerbtn">Нямаш акунт? <b>Регистрирай се</b></button>
+    <button onclick="{() => {register = true}}" style="background: none; border: none; cursor: pointer;" id="registerbtn">Нямаш акуант? <b>Регистрирай се</b></button>
 
 </div>
 {/if}
