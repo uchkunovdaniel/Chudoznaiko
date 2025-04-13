@@ -103,8 +103,8 @@
 			/*right: 5vw;*/
 			/*margin:  0 0 3vw 0;*/
 			border-radius: 10px;
-			font-family: "transforma_light", sans-serif;
-			font-weight: 900;
+			font-family: "transforma_regular", sans-serif;
+			/*font-weight: 900;*/
 			font-feature-settings: 'ss01';
 			top: 28vh;
 			right: 4vw;
