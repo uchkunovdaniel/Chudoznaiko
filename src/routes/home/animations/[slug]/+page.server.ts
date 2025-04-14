@@ -3,10 +3,7 @@ import { error } from '@sveltejs/kit';
 import { GEMINI_KEY } from '$env/static/private';
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 
-type ChatTurn = {
-  role: 'user' | 'model';
-  parts: { text: string }[];
-};
+
 // const videos = fs.readdirSync('src/lib/animations/videos');
 export const load = async ({ params, locals }) => {
 	const animations = await locals.pb.collection('animations').getFullList();
