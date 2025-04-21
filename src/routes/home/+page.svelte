@@ -1,9 +1,8 @@
 <script lang="ts">
 		import { browser } from '$app/environment';
 		import { enhance } from '$app/forms';
-		import { createAvatar } from '@dicebear/core';
-		import { funEmoji } from '@dicebear/collection';
 		import send from '$lib/assets/send.svg';
+		import defaultAvatar from '$lib/assets/defaultAvatar.png';
 
 		let { data } = $props();
 
@@ -13,22 +12,6 @@
 		}
 		document.title = 'Чудознайко';
 		}
-
-		const avatar = createAvatar(funEmoji, {
-			seed: data.user?.name,
-			size: 90,
-		});
-
-		const svg = avatar.toDataUri();
-		let pfp = $state(svg);
-		$effect(() => {
-			const avatar = createAvatar(funEmoji, {
-				seed: data.user?.id,
-				size: 90,
-			});
-			pfp = avatar.toDataUri();
-		});
-
 </script>
 
 <div class="container">
@@ -51,7 +34,8 @@
 		<img src="{data.thumbnailsg[0]}" alt="animations" style="width: 80%; height: 40%; border-radius: 1rem;">
 	</div>
 	<div class="profile">
-		<img class="avatar" src="{pfp}" alt="avatar">
+		<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
+
 		<h1>Здравей,</h1>
 		{#if data.user?.name}
 			<h1 id="name">{data.user.name}</h1>

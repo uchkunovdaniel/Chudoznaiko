@@ -1,5 +1,16 @@
 import { redirect } from '@sveltejs/kit';
 
+function dataURLtoFile(dataurl: string, filename: string) {
+    let arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)![1],
+        bstr = atob(arr[arr.length - 1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+}
 export const load = async ({locals}) => {
 	const animations = await locals.pb.collection('animations').getFullList();
 	const imgsa = animations.map(({thumbnail}) => thumbnail);
@@ -21,7 +32,9 @@ export const load = async ({locals}) => {
 	const fav_g_ids = fav_g_imgs.map((id) => id[0]);
 	const fav_g_thumbnails = fav_g_imgs.map((img, i) => locals.pb.files.getURL(favourite_games[i], img));
 
-	return { animations: animations, thumbnailsa: thumbnailsa, games: games, thumbnailsg: thumbnailsg, favourites: { thumbnails: { animations: fav_a_thumbnails, games: fav_g_thumbnails }, ids: { animations: fav_a_ids, games: fav_g_ids}}};
+	const avatar = locals.pb.files.getURL(locals.pb.authStore.record!, locals.pb.authStore.record?.avatar);
+
+	return { avatar, animations: animations, thumbnailsa: thumbnailsa, games: games, thumbnailsg: thumbnailsg, favourites: { thumbnails: { animations: fav_a_thumbnails, games: fav_g_thumbnails }, ids: { animations: fav_a_ids, games: fav_g_ids}}};
 }
 
 export const actions = {
@@ -55,5 +68,13 @@ export const actions = {
 		else{
 			throw redirect(303, '/home');
 		}
+	},
+	saveimg: async ({locals, request}) => {
+		const data = await request.formData();
+		const img = data.get('image') as string;
+		// console.log(img);
+		const file = dataURLtoFile(img, 'avatar.png');
+		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {avatar: file});
+		throw redirect(303, '/home');
 	}
 }
