@@ -6,12 +6,21 @@
 		import eyes3 from "$lib/assets/avatars/eyes/eyes3.png";
 		import eyes4 from "$lib/assets/avatars/eyes/eyes4.png";
 		import eyes5 from "$lib/assets/avatars/eyes/eyes5.png";
+		import eyes6 from "$lib/assets/avatars/eyes/eyes6.png";
+		import eyes7 from "$lib/assets/avatars/eyes/eyes7.png";
+		import eyes8 from "$lib/assets/avatars/eyes/eyes8.png";
 		import nose1 from "$lib/assets/avatars/noses/nose1.png";
 		import nose2 from "$lib/assets/avatars/noses/nose2.png";
 		import mouth1 from "$lib/assets/avatars/mouths/mouth1.png";
 		import mouth2 from "$lib/assets/avatars/mouths/mouth2.png";
 		import mouth3 from "$lib/assets/avatars/mouths/mouth3.png";
+		import mouth4 from "$lib/assets/avatars/mouths/mouth4.png";
+		import mouth5 from "$lib/assets/avatars/mouths/mouth5.png";
+		import mouth6 from "$lib/assets/avatars/mouths/mouth6.png";
+		import mouth7 from "$lib/assets/avatars/mouths/mouth7.png";
+
 		import close from "$lib/assets/close.svg";
+		import done from "$lib/assets/done.svg";
 		import html2canvas from 'html2canvas';
 		import { enhance } from '$app/forms'
 
@@ -110,9 +119,9 @@
 		}
 
 		let accessories: Accesssory[] = [{img: bow, pos: 'left'}, {img: hat, pos: 'center'}, {img: "", pos: "center"}];
-		let eyes: Eyes[] = [{img: eyes1}, {img: eyes2}, {img: eyes3}, {img: eyes4}, {img: eyes5}];
+		let eyes: Eyes[] = [{img: eyes1}, {img: eyes2}, {img: eyes3}, {img: eyes4}, {img: eyes5}, {img: eyes6}, {img: eyes7}, {img: eyes8}];
 		let noses: Nose[] = [{img: nose1}, {img: nose2}, {img: ""}];
-		let mouths: Mouth[] = [{img: mouth1}, {img: mouth2}, {img: mouth3}];
+		let mouths: Mouth[] = [{img: mouth1}, {img: mouth2}, {img: mouth3}, {img: mouth4}, {img: mouth5}, {img: mouth6}, {img: mouth7}];
 
 		let selectedAccessory: Accesssory = accessories[2];
 		let selectedEyes: Eyes = eyes[0];
@@ -247,7 +256,9 @@
 					<button aria-label="colorselect" class="color" onclick="{color.action}" style="background: {color.color}"></button>
 				{/each}
 			</div>
-				<button class="save" aria-label="save" onclick="{saveImg}"></button>
+				<button class="save" aria-label="save" onclick="{saveImg}">
+					<img src="{done}" alt="save">
+				</button>
 		</div>
 	</div>
 
@@ -346,8 +357,12 @@
 			border-radius: .5rem;
 			border: none;
 	}
-	.reset > img {
+	.reset > img{
 			width: 3rem;
 			height: 3rem;
+	}
+	.save > img {
+			width: 4rem;
+			height: 4rem;
 	}
 </style>
