@@ -11,9 +11,6 @@
 				(btn as HTMLButtonElement).style.outline = 'none';
 		}
 			document.title = 'Чудознайко';
-			// document.querySelector('.avatar')!.addEventListener('click', () => {
-			// 	window.location.href = '/home/avatar';
-			// });
 		}
 </script>
 
