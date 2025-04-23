@@ -35,7 +35,7 @@
 	<button type="submit" form="searchform" style="background: none; border: none">
 		<img src="{search}" alt="search" id="search-btn">
 	</button>
-	<button id="userbtn" onclick="{showProfile}">
+	<button id="userbtn" onclick="{() => {goto('/home/profile')}}">
 		<img id="user" src="{user}" alt="user"/>
 	</button>
 
