@@ -22,8 +22,8 @@
 		import close from "$lib/assets/close.svg";
 		import done from "$lib/assets/done.svg";
 		import html2canvas from 'html2canvas';
-		import { enhance } from '$app/forms'
-		import { goto } from '$app/navigation';
+		import arrowL from "$lib/assets/arrowL.svg";
+		import arrowR from "$lib/assets/arrowR.svg";
 
 		interface arrow {
 			img: string | null;
@@ -65,10 +65,10 @@
 
 		for(let i = 1; i <= 4; i++){
 			leftArrows.push({
-				img: "../src/lib/assets/arrowL.svg",
+				img: arrowL,
 			});
 			rightArrows.push({
-				img: "../src/lib/assets/arrowR.svg",
+				img: arrowR,
 			});
 		}
 
