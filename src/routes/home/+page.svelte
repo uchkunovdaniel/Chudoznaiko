@@ -40,10 +40,7 @@
 	<div class="profile">
 		<h1>Профил</h1>
 
-		<button style="border: none; background: none; cursor: pointer;" onclick="{() => {window.location.href = `/home/avatar/`}}" aria-label="avatar">
-			<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
-		</button>
-
+		<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
 		{#if data.user?.name}
 			<h1 id="name" style="text-align: center">Здравей, <br>{data.user.name}</h1>
 			<form action="?/removename" method="POST" use:enhance>
