@@ -10,7 +10,10 @@
 			for(const btn of document.getElementsByClassName('nav-buttons')){
 				(btn as HTMLButtonElement).style.outline = 'none';
 		}
-		document.title = 'Чудознайко';
+			document.title = 'Чудознайко';
+			// document.querySelector('.avatar')!.addEventListener('click', () => {
+			// 	window.location.href = '/home/avatar';
+			// });
 		}
 </script>
 
@@ -40,7 +43,9 @@
 	<div class="profile">
 		<h1>Профил</h1>
 
-		<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
+		<button style="border: none; background: none; cursor: pointer;" onclick="{() => {window.location.href = `/home/avatar/`}}" aria-label="avatar">
+			<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
+		</button>
 
 		{#if data.user?.name}
 			<h1 id="name" style="text-align: center">Здравей, <br>{data.user.name}</h1>
@@ -180,10 +185,9 @@
         box-shadow: 0 0 0;
     }
 		.avatar{
-				width: 8vw;
+				width: 9vw;
 				border-radius: 1rem;
-				box-shadow: rgba(0, 0, 0, 0.38) 0 0 5px 2px;
-    }
+		}
 		.input-icon {
       position: relative;
       /*right: 4.5vw;*/
