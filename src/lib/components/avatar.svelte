@@ -23,6 +23,7 @@
 		import done from "$lib/assets/done.svg";
 		import html2canvas from 'html2canvas';
 		import { enhance } from '$app/forms'
+		import { goto } from '$app/navigation';
 
 		interface arrow {
 			img: string | null;
@@ -212,7 +213,10 @@
 							'x-sveltekit-action': true
 						}
 					})
-
+					// goto('/home', { replaceState: false });
+					// const logo = document.querySelector('.homebtn') as HTMLButtonElement;
+					// console.log(logo);
+					// logo.click();
 				});
 			}
 		}

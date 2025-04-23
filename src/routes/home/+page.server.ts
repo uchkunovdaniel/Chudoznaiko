@@ -75,6 +75,7 @@ export const actions = {
 		// console.log(img);
 		const file = dataURLtoFile(img, 'avatar.png');
 		await locals.pb.collection('users').update(locals.pb.authStore.record!.id, {avatar: file});
-		throw redirect(303, '/home');
+
+		// return { avatar: locals.pb.files.getURL(locals.pb.authStore.record!, locals.pb.authStore.record?.avatar) }
 	}
 }
