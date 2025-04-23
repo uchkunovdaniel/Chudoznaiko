@@ -28,9 +28,11 @@
 	<div class="content">
 		<div class="favourites">
 			<h2 class="favlabel">Любими</h2>
-			{#each data.favourites.thumbnails.animations.slice(0,2) as thumbnail}
-				<img src="{thumbnail}" alt="Thumbnail"/>
-			{/each}
+			<div class="favlist">
+				{#each data.favourites.thumbnails.animations.slice(0,2) as thumbnail}
+					<img src="{thumbnail}" alt="Thumbnail"/>
+				{/each}
+			</div>
 		</div>
 		<div class="badges">
 			<h2 class="badgelabel">Значки</h2>
@@ -104,11 +106,17 @@
 			align-items: center;
 			justify-content: center;
 	}
-	.favourites > img {
+	.favlist > img {
 			width: 18vw;
 			border-radius: 10px;
 	}
 	h2{
 			font-family: transforma_regular, sans-serif;
+	}
+	.favlist{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 2vw;
 	}
 </style>
