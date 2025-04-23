@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 
 
 export const load = async ({locals}) => {
-
+	locals.pb.autoCancellation(false);
 	const animations = await locals.pb.collection('animations').getFullList();
 	const imgsa = animations.map(({thumbnail}) => thumbnail);
 	const thumbnailsa = imgsa.map((img, i) => locals.pb.files.getURL(animations[i], img));

@@ -8,6 +8,8 @@
 		<div class="email">
 			{data.user?.email}
 		</div>
+		<button class="changepass">Промени парола</button>
+		<button class="logout">Излез</button>
 	</div>
 	<div class="content">
 
@@ -20,7 +22,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		/*justify-content: center;*/
 		width: 100%;
 		height: 100%;
 		padding-left: 10vw;
@@ -46,5 +47,17 @@
 		color: #373737;
 		font-family: transforma, sans-serif;
 		/*margin-top: 1rem;*/
+	}
+	.changepass, .logout{
+		font-size: 1.4vw;
+		line-height: 3vw;
+		padding: 1vw;
+		width: 21vw;
+		background: #CDE8FE;
+		border-radius: 10px;
+		color: #373737;
+		font-family: transforma, sans-serif;
+		cursor: pointer;
+		border: none;
 	}
 </style>
