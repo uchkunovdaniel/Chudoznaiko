@@ -3,21 +3,11 @@
 	import search from '$lib/assets/search.svg';
 	import '../fonts.css';
 	import user from '$lib/assets/user.svg';
-	import UserInfo from '$lib/components/userinfo.svelte';
-	import { afterNavigate, goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { enhance } from '$app/forms';
-	import { visible } from '$lib/visible';
 
+	let { children } = $props();
 
-	let { children, data } = $props();
-
-	function showProfile(){
-		visible.update(v => !v);
-	}
-
-	afterNavigate(() => {
-		visible.update(() => false);
-	})
 	let Search: string = $state('');
 
 </script>
@@ -40,10 +30,6 @@
 	</button>
 
 </header>
-
-{#if $visible}
-	<UserInfo {showProfile} {data} />
-{/if}
 
 <style>
 		:global(body){

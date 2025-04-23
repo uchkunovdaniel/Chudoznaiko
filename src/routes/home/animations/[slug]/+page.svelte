@@ -4,53 +4,19 @@
 	import send from '$lib/assets/send.svg';
 	import save from '$lib/assets/save.svg';
 	import saved from '$lib/assets/saved.svg';
-	import closeb from '$lib/assets/closeb.svg';
-	// import { slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
-	import { browser } from '$app/environment';
-
-	function slideFromBottom(node: Node, {
-    delay = 0,
-    duration = 400,
-    easing = quintOut
-	}) {
-    return {
-      delay,
-      duration,
-      easing,
-      css: (t: number) => `
-        transform: translateY(${(1 - t) * 100}%);
-        opacity: ${t};
-      `
-    };
-  }
-		function slideToBottom(node: Node, {
-    delay = 0,
-    duration = 400,
-    easing = quintOut
-  	}) {
-    return {
-      delay,
-      duration,
-      easing,
-      css: (t: number) => `
-        transform: translateY(${(1 - t) * 100}%);
-        opacity: ${t};
-      `
-    };
-  }
 
 	let { data, form }: PageProps = $props();
 
-	let visible = $state(false);
-
-	if(browser){
-		let input = document.getElementById('prompt');
-		input?.addEventListener('focus', () => visible = true);
+	function toggle() {
+		const description = document.querySelector('.description') as HTMLElement;
+		if(description.style.zIndex == "1"){
+			description.style.zIndex = "0";
+		}
+		else{
+			description.style.zIndex = "1";
+		}
 	}
 </script>
-
-
 <div class="heading">
 	{data.name}
 </div>
@@ -59,26 +25,24 @@
 		<source src="{data.video}" type="video/mp4">
 		<track src="" kind="captions">
 	</video>
-	{#if visible}
-				<div class="response" in:slideFromBottom={{duration: 500}} out:slideToBottom={{duration: 500}}>
-					<img src="{closeb}" alt="closeb" class="input-icon" style="width: 1vw; height: 1vw; position: absolute; right: 1vw; top: 1vw;">
-					<button aria-label="close" style="background: none; border: none; cursor: pointer; position: absolute; right: 0; top: 0vw; width:1.5vw; height: 3vw; z-index: 1011" onclick={() => visible = false}></button>
-					<span>ЧудоБот</span>
-					<div>{form?.response}</div>
-				</div>
-	{/if}
-	<div class="text">
+
+	<div class="response">
+		<button class="desc" onclick="{toggle}">Описание</button>
+		<span style="right: 3.5vw">ЧудоБот</span>
+		<p>{form?.response}</p>
+		<form class="prompt" method="POST" action="?/prompt" use:enhance>
+			<button style="background: none; border: none; cursor: pointer; position: absolute;" type="submit">
+				<img src="{send}" alt="send" class="input-icon">
+			</button>
+			<input id='prompt' type="text" placeholder="Попитай нашия помощник" name="prompt" autocomplete="off">
+		</form>
+	</div>
 	<div class="description">
+		<span style="left: 3.5vw">Описание</span>
+		<button class="res" onclick="{toggle}">ЧудоБот</button>
 		<p>{data.description}</p>
 	</div>
-	<form class="prompt" method="POST" action="?/prompt" use:enhance>
-		<button style="background: none; border: none; cursor: pointer; position: absolute;" type="submit">
-			<img src="{send}" alt="send" class="input-icon">
-		</button>
-		<input id='prompt' type="text" placeholder="Попитай нашия помощник" name="prompt" autocomplete="off">
-	</form>
-</div>
-</div>
+	</div>
 <form method="POST" action="{data.user?.favourite_animations.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
 	<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_animations.includes(data.id) ? 'var(--main)' : '#373737'}">
 		{data.user?.favourite_animations.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
@@ -93,7 +57,9 @@
 		font-weight: 900;
 		font-feature-settings: 'ss01';
 		position: absolute;
-		top: 1vw;
+		top: .5vw;
+		/*background: red;*/
+		/*width: inherit;*/
 	}
 	video {
 		width: 50vw;
@@ -129,7 +95,7 @@
 		justify-content: center;
 		align-items: center;
 		width: 28vw;
-		height: 40.5vh;
+		height: 57vh;
 		background: var(--accent);
 		flex-direction: column;
 		overflow-y: auto;
@@ -144,29 +110,28 @@
 		/*top: 28vh;*
 		/*padding: 1vw;*/
 		font-size: 1.2vw;
+		z-index: 0;
 	}
 	.response{
-			padding: 1vw;
+			padding: 1vw 1vw 0 1vw;
 			position: absolute;
 			/*top: 12.7vw;	*/
 			width: 28vw;
-			height: 45vh;
-			background: rgba(255, 255, 255, 1);
+			height: 27vw;
+			background: var(--accent);
 			border-radius: 0.5rem;
-			box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;
+			/*box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;*/
 			font-family: "transforma_light", sans-serif;
 			font-size: 1.2vw;
 			user-select: none;
 			display: flex;
-			justify-content: center;
+			justify-content: flex-end;
 			align-items: center;
 			z-index: 1;
 			right: 6.69vw;
-			overflow-y: auto;
-	}
-
-	input:focus + .response{
-			visibility: visible;
+			flex-direction: column;
+			gap: 3vw;
+			/*overflow-y: auto;*/
 	}
 	.content{
 			display: flex;
@@ -176,7 +141,7 @@
 	}
 	input {
 			position: relative;
-			background: rgba(255, 255, 255, 1);
+			background: var(--accent);
       padding-right: 2.5vw;
       padding-left: 1vw;
       width: 26.5vw;
@@ -184,24 +149,16 @@
       border: none;
       border-radius: 0.5rem;
       outline: none;
-      transition: ease 0.25s;
       font-family: "transforma_light", sans-serif;
       font-size: 1.2vw;
       user-select: none;
+			text-align: center;
 			/*top: 4vw;*/
-      box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;
-			z-index: 1000;
+      /*box-shadow: rgba(255, 255, 255, 0.38) 0 0 5px;*/
+			/*z-index: 1000;*/
 		/*background: var(--accent)	*/
 	}
-	.text{
-			display: flex;
-			flex-direction: column;
-			gap: 6vh;
-			max-height: 60vh;
-			font-family: "transforma", sans-serif;
-			font-weight: 900;
-			font-feature-settings: 'ss01';
-	}
+
 	.input-icon {
       position: absolute;
       left: 27.7vw;
@@ -230,5 +187,37 @@
 			background: none;
 			cursor: pointer;
 			color: #373737;
+		}
+		.desc{
+			width: 15vw;
+			height: 3vw;
+			background: white;
+			/*border-radius: 50%;*/
+			position: absolute;
+			top: 0;
+			left: 0;
+			border: 3px solid rgba(55, 55, 55, 0.37);
+			border-top-left-radius: 0.5rem;
+			border-bottom-right-radius: .5rem;
+			font-size: 1.5vw;
+			font-family: "transforma", sans-serif;
+			font-weight: 900;
+			font-feature-settings: 'ss01';
+		}
+		.res{
+			width: 15vw;
+			height: 3vw;
+			background: white;
+			/*border-radius: 50%;*/
+			position: absolute;
+			top: 0;
+			right: 0;
+			border: 3px solid rgba(55, 55, 55, 0.37);
+			border-top-right-radius: 0.5rem;
+			border-bottom-left-radius: .5rem;
+			font-size: 1.5vw;
+			font-family: "transforma", sans-serif;
+			font-weight: 900;
+			font-feature-settings: 'ss01';
 		}
 </style>

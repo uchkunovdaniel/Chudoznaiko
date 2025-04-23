@@ -1,13 +1,22 @@
 <script lang="ts">
-		import { browser } from '$app/environment';
+		import defaultAvatar from '$lib/assets/defaultAvatar.png';
+		import Avatar from '\$lib/components/avatar.svelte';
 
 		let { data } = $props();
 
+		let visible = $state(false);
+
 </script>
+
+{#if visible}
+	<Avatar />
+{/if}
 
 <div class="container">
 	<div class="profile">
-		<img class="avatar" src="{data.avatar}" alt="User Avatar" />
+		<button style="border: none; background: none; cursor: pointer;" onclick="{() => {visible = !visible}}" aria-label="avatar">
+			<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
+		</button>
 		<div class="email">
 			{data.user?.email}
 		</div>
@@ -20,7 +29,7 @@
 		<div class="favourites">
 			<h2 class="favlabel">Любими</h2>
 			{#each data.favourites.thumbnails.animations.slice(0,2) as thumbnail}
-				<img src="{thumbnail}" alt="Thumbnail" style="margin-top: 3vw"/>
+				<img src="{thumbnail}" alt="Thumbnail"/>
 			{/each}
 		</div>
 		<div class="badges">
@@ -79,7 +88,8 @@
 	}
 	.favourites, .badges{
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		/*align-items: center;*/
 		background: var(--accent);
 		width: 55vw;
 		height: 18.5vw;
@@ -95,17 +105,10 @@
 			justify-content: center;
 	}
 	.favourites > img {
-			width: 20vw;
+			width: 18vw;
 			border-radius: 10px;
 	}
 	h2{
-			position: absolute;
 			font-family: transforma_regular, sans-serif;
-	}
-	.favlabel{
-			top: 7vw
-	}
-	.badgelabel{
-			top: 28vw;
 	}
 </style>

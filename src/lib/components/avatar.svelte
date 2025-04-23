@@ -212,6 +212,8 @@
 						headers: {
 							'x-sveltekit-action': true
 						}
+					}).then(() => {
+						window.location.reload();
 					})
 					// goto('/home', { replaceState: false });
 					// const logo = document.querySelector('.homebtn') as HTMLButtonElement;
@@ -288,20 +290,25 @@
 	}
 	.avatar-container {
 			display: flex;
-			/*justify-content: flex-end;*/
+			/*justify-content: flex-start;*/
 			gap: 1rem;
 			flex-direction: column;
 			align-items: center;
-			padding-top: 9rem;
+			padding-top: 1.3rem;
 	}
 	.container {
+			position: absolute;
 			display: flex;
 			justify-content: center;
 			gap: 3rem;
 			align-items: center;
-			width: 100vw;
-			height: 100vh;
-			margin-top: -5rem;
+			width: 58vw;
+			height: max-content;
+			background: var(--accent);
+			margin: 6rem 0 0 25rem;
+			padding-bottom: 1rem;
+			border-radius: 1rem;
+			z-index: 100;
 	}
 	.colors {
 			display: flex;
@@ -333,7 +340,7 @@
 			width: 5rem;
 			gap: 2rem;
 			align-items: center;
-			margin: -8rem;
+			margin: 0 -8rem 7rem -8rem;
 	}
 	.arrow{
 			background: none;

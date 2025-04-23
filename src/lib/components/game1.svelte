@@ -1,10 +1,31 @@
 <script lang="ts">
     import bear from "/src/lib/assets/bear.svg";
+    import honey from "/src/lib/assets/honey.svg";
+
     import otter from "/src/lib/assets/otter.svg";
+    import worm from "/src/lib/assets/worm.svg";
+
     import squirrel from "/src/lib/assets/squirrel.svg";
     import acorn from "/src/lib/assets/acorn.svg";
-    import honey from "/src/lib/assets/honey.svg";
-    import worm from "/src/lib/assets/worm.svg";
+
+    import cat from "/src/lib/assets/cat.svg";
+    import catfood from "/src/lib/assets/catfood.svg";
+
+    import dog from "/src/lib/assets/dog.svg";
+    import dogfood from "/src/lib/assets/dogfood.svg";
+
+    import duck from "/src/lib/assets/duck.svg";
+    import rabbit from "/src/lib/assets/rabbit.svg";
+    import elephant from "/src/lib/assets/elephant.svg";
+    import grass from "/src/lib/assets/grass.svg";
+
+    import frog from "/src/lib/assets/frog.svg";
+    import fly from "/src/lib/assets/fly.svg";
+
+    import seal from "/src/lib/assets/seal.svg";
+    import penguin from "/src/lib/assets/penguin.svg";
+    import fish from "/src/lib/assets/fish.svg";
+
     import { browser } from '$app/environment';
 
     interface AnimalPair {
@@ -22,6 +43,14 @@
         { animal: { name: 'Видра', file: otter }, food: { name: 'Червей', file: worm } },
         { animal: { name: 'Катерица', file: squirrel }, food: { name: 'Жълъд', file: acorn } },
         { animal: { name: 'Мечка', file: bear }, food: { name: 'Мед', file: honey } },
+        { animal: { name: 'Котка', file: cat }, food: { name: 'Котешка храна', file: catfood } },
+        { animal: { name: 'Куче', file: dog }, food: { name: 'Кучешка храна', file: dogfood } },
+        { animal: { name: 'Пате', file: duck }, food: { name: 'Трева', file: grass } },
+        { animal: { name: 'Зайче', file: rabbit }, food: { name: 'Трева', file: grass } },
+        { animal: { name: 'Слон', file: elephant }, food: { name: 'Трева', file: grass } },
+        { animal: { name: 'Жаба', file: frog }, food: { name: 'Муха', file: fly } },
+        { animal: { name: 'Тюлен', file: seal }, food: { name: 'Риба', file: fish } },
+        { animal: { name: 'Пингвин', file: penguin }, food: { name: 'Риба', file: fish } }
     ];
 
     let matchedPairs: string[] = $state([]);
@@ -40,18 +69,30 @@
         return shuffled;
     }
 
+    let selectedPairs: AnimalPair[] = $state([]);
+    let gameStarted: boolean = $state(false); // New flag to track if the game has started
+
     function initializeGame(): void {
-        // Shuffle the pairs and then separate animals and foods
-        const shuffledPairs = shuffle([...ANIMAL_PAIRS]);
-        shuffledAnimals = shuffle([...shuffledPairs]);
-        shuffledFoods = shuffle([...shuffledPairs]);
+        selectedPairs = [];
+        const usedFoods: Set<string> = new Set();
+
+        while (selectedPairs.length < 3) {
+            const pair = ANIMAL_PAIRS[Math.floor(Math.random() * ANIMAL_PAIRS.length)];
+            if (!usedFoods.has(pair.food.name)) {
+                selectedPairs.push(pair);
+                usedFoods.add(pair.food.name);
+            }
+        }
+
+        shuffledAnimals = shuffle([...selectedPairs]);
+        shuffledFoods = shuffle([...selectedPairs]);
 
         matchedPairs = [];
         selectedAnimal = null;
         selectedFood = null;
         error = false;
+        gameStarted = true; // Set the flag to true after initialization
     }
-
     function handleAnimalClick(animal: string): void {
         if (matchedPairs.includes(animal)) return;
         selectedAnimal = selectedAnimal === animal ? null : animal;
@@ -86,9 +127,8 @@
         initializeGame();
     }
 </script>
-
 <div class="game-container">
-    {#if matchedPairs.length === ANIMAL_PAIRS.length * 2}
+    {#if matchedPairs.length === selectedPairs.length * 2 && gameStarted}
         <div class="win-message">
             <h2>Поздравления! Печелиш! 🎉</h2>
             <button onclick={initializeGame} style="height: 5vw">Играй пак</button>
@@ -103,7 +143,6 @@
                     onclick={() => handleAnimalClick(pair.animal.name)}>
 
                     <img class="image" src="{pair.animal.file}" alt="{pair.animal.name}" />
-                    <!--{pair.animal.name}-->
                 </button>
             {/each}
         </div>
@@ -117,7 +156,6 @@
                     onclick={() => handleFoodClick(pair.food.name)}
                 >
                     <img class="imagef" src="{pair.food.file}" alt="{pair.food.name}" style="width: fit-content" />
-                    <!--{pair.food.name}-->
                 </button>
             {/each}
         </div>
