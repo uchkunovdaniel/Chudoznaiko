@@ -110,7 +110,7 @@
 		/*top: 28vh;*
 		/*padding: 1vw;*/
 		font-size: 1.2vw;
-		z-index: 0;
+		z-index: 1;
 	}
 	.response{
 			padding: 1vw 1vw 0 1vw;
@@ -203,6 +203,7 @@
 			font-family: "transforma", sans-serif;
 			font-weight: 900;
 			font-feature-settings: 'ss01';
+			cursor: pointer;
 		}
 		.res{
 			width: 15vw;
@@ -219,5 +220,6 @@
 			font-family: "transforma", sans-serif;
 			font-weight: 900;
 			font-feature-settings: 'ss01';
+			cursor: pointer;
 		}
 </style>
