@@ -33,7 +33,7 @@
 			/*padding-left: 10vw;*/
 			/*padding-right: 10vw;*/
 			/*padding-top: 15vw;*/
-			top: -8vw;
+			top: 3vw;
 			position: relative;
 	}
 	button{
