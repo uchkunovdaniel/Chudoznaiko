@@ -15,42 +15,35 @@
 </script>
 
 <div class="container">
-	<div class="animations">
-		<h1>Анимации</h1>
-		<div class="ai">
-			<p>
-				Цветните анимации представят научни и социални теми забавно и образователно за децата.
-			</p>
+	<div class="column">
+		<div class="animations">
+			<h1>Анимации</h1>
+			<div class="ai">
+				<p>
+					Цветните анимации представят научни и социални теми забавно и образователно за децата.
+				</p>
+			</div>
+			<button class="hidden" onclick="{() => {window.location.href = `/home/animations/`}}" aria-label="animation">
+				<img src="{data.thumbnailsa[0]}" alt="animations" class="cover">
+			</button>
 		</div>
-		<button class="hidden" onclick="{() => {window.location.href = `/home/animations/`}}" aria-label="animation"></button>
-		<img src="{data.thumbnailsa[0]}" alt="animations" style="width: 80%; height: 40%; border-radius: 1rem;">
-	</div>
-	<div class="games">
-		<h1>Игри</h1>
-		<div class="ai">
-			<p>Образователните игри са лесни за навигиране от деца, като развиват тяхната логика, креативност и знания.</p>
+		<div class="games">
+			<h1>Игри</h1>
+			<div class="ai">
+				<p>Образователните игри са лесни за навигиране от деца, като развиват тяхната логика, креативност и знания.</p>
+			</div>
+			<button class="hidden" onclick="{() => {window.location.href = `/home/games/`}}" aria-label="animation">
+				<img src="{data.thumbnailsg[0]}" alt="animations" class="cover">
+			</button>
 		</div>
-		<button class="hidden" onclick="{() => {window.location.href = `/home/games/`}}" aria-label="animation"></button>
-		<img src="{data.thumbnailsg[0]}" alt="animations" style="width: 80%; height: 40%; border-radius: 1rem;">
 	</div>
 	<div class="profile">
+		<h1>Профил</h1>
+
 		<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
 
-		<h1>Здравей,</h1>
 		{#if data.user?.name}
-			<h1 id="name">{data.user.name}</h1>
-			<div class="favourites">
-				{#each data.favourites.thumbnails.animations as fav, i}
-					<button onclick="{() => {window.location.href = `/home/animations/${data.favourites.ids.animations[i]}`}}" aria-label="animation" style="border: none; background: none; cursor: pointer;">
-						<img src="{fav}" alt="favourite" style="width: 5vw; height: 5vw; border-radius: 1em;">
-					</button>
-				{/each}
-				{#each data.favourites.thumbnails.games as fav, i}
-					<button onclick="{() => {window.location.href = `/home/games/${data.favourites.ids.games[i]}`}}" aria-label="game" style="border: none; background: none; cursor: pointer;">
-						<img src="{fav}" alt="favourite" style="width: 5vw; height: 5vw; border-radius: 1em;">
-					</button>
-				{/each}
-			</div>
+			<h1 id="name" style="text-align: center">Здравей, <br>{data.user.name}</h1>
 			<form action="?/removename" method="POST" use:enhance>
 				<button class="edit" type="submit">Редактирай</button>
 			</form>
@@ -80,10 +73,11 @@
 		}
 		h1{
 			font-size: 2.5vw;
-			color: white;
+			color: black;
 			font-family: "transforma", sans-serif;
 			font-weight: 900;
 			margin: 0;
+			user-select: none;
 		}
 		.container{
 				padding-top: 5vw;
@@ -94,10 +88,10 @@
 				height: fit-content;
 				width: 100vw;
 		}
-		.animations, .games, .profile{
-			width: 25vw;
+		.profile{
+			width: 20vw;
 			height: 35vw;
-			background: var(--accent);
+			background: #CDE8FE;
 			border-radius: 1rem;
 			margin: 1vw;
 			display: flex;
@@ -109,9 +103,10 @@
 			padding: 2vw;
 			position: relative;
 			user-select: none;
+			gap: 2vw
 		}
 		.ai{
-			width: 90%;
+			width: 60%;
 			height: 50%;
 			display: flex;
 			flex-direction: column;
@@ -122,6 +117,7 @@
 			font-size: 1.5vw;
 			font-family: "transforma_light", sans-serif;
 			text-align: left;
+			user-select: none;
 		}
 		.hidden{
 			position: absolute;
@@ -131,7 +127,15 @@
 			background: none;
 			border: none;
 			cursor: pointer;
-			bottom: 1.5vw;
+			/*bottom: 1.5vw;*/
+			/*background: red;*/
+			right: 34vw;
+			/*margin-top: 1vw;*/
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0;
+			z-index: 100;
 	}
 		input{
 			position: relative;
@@ -155,10 +159,10 @@
         height: 4vw;
         border: none;
         border-radius: 0.5rem;
-        font-family: "transforma", sans-serif;
+        font-family: "transforma_light", sans-serif;
         font-size: 1.5vw;
         font-weight: 900;
-        color: var(--main);
+        /*color: var(--main);*/
         outline: none;
         cursor: pointer;
         transition: ease 0.25s;
@@ -188,12 +192,25 @@
       user-select: none;
 			/*bottom: 12vw*/
     }
-		.favourites{
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			gap: 1vw;
-			margin-top: 1vw;
+		.column{
+				display: flex;
+				flex-direction: column;
+		}
+		.games, .animations{
+				height: 14.5vw;
+				width: 60vw;
+				background: var(--accent);
+				border-radius: 1rem;
+				display: flex;
+				margin: 1vw;
+				padding: 2vw;
+				flex-direction: column;
+				justify-content: center;
+		}
+		.cover{
+				width: 20vw;
+				height: 13vw;
+				border-radius: 1rem;
+				margin: 0;
 		}
 </style>
