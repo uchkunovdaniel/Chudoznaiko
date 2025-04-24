@@ -222,4 +222,7 @@
 			font-feature-settings: 'ss01';
 			cursor: pointer;
 		}
+                input:focus::placeholder {
+                        color: transparent;
+                }
 </style>
