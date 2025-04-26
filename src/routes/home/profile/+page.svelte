@@ -91,6 +91,7 @@
 		justify-content: flex-start;
 		border-radius: 10px;
 		padding-left: 2vw;
+		color: #373737;
 	}
 	.content{
 			display: flex;
@@ -98,6 +99,7 @@
 			gap: 2vw;
 			align-items: center;
 			justify-content: center;
+			color: #373737;
 	}
 	.favlist > img {
 			width: 18vw;
@@ -105,6 +107,7 @@
 	}
 	h2{
 			font-family: transforma_regular, sans-serif;
+			color: #373737;
 	}
 	.favlist{
 			display: flex;
