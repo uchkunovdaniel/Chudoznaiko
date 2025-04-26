@@ -3,7 +3,6 @@
 	import { enhance } from '$app/forms';
 	import send from '$lib/assets/send.svg';
 	import save from '$lib/assets/save.svg';
-	import saved from '$lib/assets/saved.svg';
 
 	let { data, form }: PageProps = $props();
 
@@ -21,14 +20,24 @@
 	{data.name}
 </div>
 <div class="content">
-	<video controls loop>
-		<source src="{data.video}" type="video/mp4">
-		<track src="" kind="captions">
-	</video>
+	<div class="video">
+		<video controls loop>
+			<source src="{data.video}" type="video/mp4">
+			<track src="" kind="captions">
+		</video>
+		<form method="POST" action="{data.user?.favourite_animations.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
+<!--	<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_animations.includes(data.id) ? 'var(&#45;&#45;main)' : '#373737'}">-->
+			<button class="favbtn" type="submit" name="id" value="{data.id}">
+<!--		<img class="favourite" src="{data.user?.favourite_animations.includes(data.id) ? saved : save}" alt="save">-->
+			<img class="favourite" src="{save}" alt="save">
+				<span class="save">{data.user?.favourite_animations.includes(data.id) ? "Запазено в любими" : "Запази видео"}</span>
+	</button>
+</form>
+	</div>
 
 	<div class="response">
 		<button class="desc" onclick="{toggle}">Описание</button>
-		<span style="right: 3.5vw">ЧудоБот</span>
+		<span style="right: 3.5vw" class="title">ЧудоБот</span>
 		<p>{form?.response}</p>
 		<form class="prompt" method="POST" action="?/prompt" use:enhance>
 			<button style="background: none; border: none; cursor: pointer; position: absolute;" type="submit">
@@ -37,27 +46,23 @@
 			<input id='prompt' type="text" placeholder="Попитай нашия помощник" name="prompt" autocomplete="off">
 		</form>
 	</div>
+
 	<div class="description">
-		<span style="left: 3.5vw">Описание</span>
+		<span style="left: 3.5vw" class="title">Описание</span>
 		<button class="res" onclick="{toggle}">ЧудоБот</button>
 		<p>{data.description}</p>
 	</div>
 	</div>
-<form method="POST" action="{data.user?.favourite_animations.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
-	<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_animations.includes(data.id) ? 'var(--main)' : '#373737'}">
-		{data.user?.favourite_animations.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
-		<img class="favourite" src="{data.user?.favourite_animations.includes(data.id) ? saved : save}" alt="save">
-	</button>
-</form>
 
 <style>
-	span{
+	.title{
 		font-size: 1.5vw;
 		font-family: "transforma", sans-serif;
 		font-weight: 900;
 		font-feature-settings: 'ss01';
 		position: absolute;
 		top: .5vw;
+		user-select: none;
 		/*background: red;*/
 		/*width: inherit;*/
 	}
@@ -111,6 +116,7 @@
 		/*padding: 1vw;*/
 		font-size: 1.2vw;
 		z-index: 1;
+		user-select: none;
 	}
 	.response{
 			padding: 1vw 1vw 0 1vw;
@@ -169,12 +175,14 @@
 			z-index: 1010;
     }
 		.favourite{
-			width: 2vw;
-			height: 2vw;
+			width: 1.4vw;
+			height: 1.4vw;
+			user-select: none;
+			margin-right: .5vw;
     }
 		.favbtn{
 			position: relative;
-			left: 43vw;
+			/*left: 6vw;*/
 			/*top: 4vw;*/
 			width: fit-content;
 			height: 2vw;
@@ -184,9 +192,9 @@
 			font-family: transforma, sans-serif;
 			border: none;
 			border-radius: 5px;
-			background: none;
+			background: var(--main);
 			cursor: pointer;
-			color: #373737;
+			color: white;
 		}
 		.desc{
 			width: 15vw;
@@ -221,5 +229,17 @@
 			font-weight: 900;
 			font-feature-settings: 'ss01';
 			cursor: pointer;
+		}
+		.save{
+			font-size: 1vw;
+			font-family: "transforma", sans-serif;
+			/*font-weight: 900;*/
+			font-feature-settings: 'ss01';
+			color: white;
+			margin-top: .2vw;
+			user-select: none;
+		}
+		input:focus::placeholder{
+			color: transparent;
 		}
 </style>

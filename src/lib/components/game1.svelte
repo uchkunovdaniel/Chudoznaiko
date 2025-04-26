@@ -76,7 +76,7 @@
         selectedPairs = [];
         const usedFoods: Set<string> = new Set();
 
-        while (selectedPairs.length < 3) {
+        while (selectedPairs.length < 5) {
             const pair = ANIMAL_PAIRS[Math.floor(Math.random() * ANIMAL_PAIRS.length)];
             if (!usedFoods.has(pair.food.name)) {
                 selectedPairs.push(pair);
@@ -186,10 +186,11 @@
     }
     .game-container {
         max-width: fit-content;
-        max-height: 500px;
-        margin: 15vw 2vw;
+        max-height: fit-content;
+        margin: 15vw auto 0 auto;
         padding: 20px;
         text-align: center;
+        background: none;
     }
 
     button {

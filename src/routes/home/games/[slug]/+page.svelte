@@ -13,30 +13,34 @@
 </div>
 
 {#if data.index === 1}
-	<Game1 />
-	<div class="description">{data.description}</div>
-	<form method="POST" action="{data.user?.favourite_games.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
-		<button class="favbtn" type="submit" name="id" value="{data.id}" style="color: {data.user?.favourite_games.includes(data.id) ? 'var(--main)' : '#373737'}; left: {data.user?.favourite_games.includes(data.id) ? '80.5vw' : '82vw'}">
-			{data.user?.favourite_games.includes(data.id) ? "Запазено в любими" : "Запази в любими"}
-		<img class="favourite" src="{data.user?.favourite_games.includes(data.id) ? saved : save}" alt="save">
-	</button>
-</form>
+		<Game1 />
+		<div class="container">
+			<form method="POST" action="{data.user?.favourite_animations.includes(data.id) ? '?/delete' : '?/save'}" use:enhance>
+				<button class="favbtn" type="submit" name="id" value="{data.id}">
+					<img class="favourite" src="{save}" alt="save">
+					<span class="save">{data.user?.favourite_animations.includes(data.id) ? "Запазено в любими" : "Запази видео"}</span>
+				</button>
+			</form>
+			<div class="description">{data.description}</div>
+		</div>
 {:else}
 	<p>Game not found</p>
 {/if}
 <style>
 		.description{
-				width: 35vw;
-				position: absolute;
-				right: 5vw;
-				top: 20vw;
-				font-size: 1.3vw;
-				text-align: justify;
-				background: var(--accent);
-				padding: 1vw;
-				border-radius: 10px;
-				font-family: "transforma_regular", sans-serif;
-				color: #373737;
+			width: 69vw;
+			position: relative;
+			/*margin: auto;*/
+			/*right: 5vw;*/
+			/*top: 20vw;*/
+			font-size: 1.3vw;
+			text-align: justify;
+			background: var(--accent);
+			padding: 1vw;
+			border-radius: 10px;
+			font-family: "transforma_regular", sans-serif;
+			color: #373737;
+			margin-bottom: 1vw;
 		}
 		.heading {
 			display: flex;
@@ -70,10 +74,18 @@
 			width: 2vw;
 			height: 2vw;
     }
+		.save{
+			font-size: 1vw;
+			font-family: "transforma", sans-serif;
+			/*font-weight: 900;*/
+			font-feature-settings: 'ss01';
+			color: white;
+			margin-top: .2vw;
+			user-select: none;
+		}
 		.favbtn{
-			position: absolute;
-			left: 82vw;
-			top: 41vw;
+			position: relative;
+			/*left: 14.5vw;*/
 			/*top: 4vw;*/
 			width: fit-content;
 			height: 2vw;
@@ -83,8 +95,23 @@
 			font-family: transforma, sans-serif;
 			border: none;
 			border-radius: 5px;
-			background: none;
+			background: var(--main);
 			cursor: pointer;
-			color: #373737;
+			color: white;
+		}
+		.favourite{
+			width: 1.4vw;
+			height: 1.4vw;
+			user-select: none;
+			margin-right: .5vw;
+    }
+		.container{
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+				width: fit-content;
+				margin: auto;
+				flex-direction: column;
+				gap: 1vw;
 		}
 </style>

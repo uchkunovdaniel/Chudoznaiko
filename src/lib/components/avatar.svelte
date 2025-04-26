@@ -213,7 +213,7 @@
 							'x-sveltekit-action': true
 						}
 					}).then(() => {
-						window.location.reload();
+						window.location.href = '/home/profile';
 					})
 					// goto('/home', { replaceState: false });
 					// const logo = document.querySelector('.homebtn') as HTMLButtonElement;
@@ -297,15 +297,15 @@
 			padding-top: 1.3rem;
 	}
 	.container {
-			position: absolute;
+			position: relative;
 			display: flex;
 			justify-content: center;
 			gap: 3rem;
 			align-items: center;
 			width: 58vw;
 			height: max-content;
-			background: var(--accent);
-			margin: 6rem 0 0 25rem;
+			/*background: var(--accent);*/
+			/*margin: 6rem 0 0 25rem;*/
 			padding-bottom: 1rem;
 			border-radius: 1rem;
 			z-index: 100;

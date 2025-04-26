@@ -1,22 +1,15 @@
 <script lang="ts">
 		import defaultAvatar from '$lib/assets/defaultAvatar.png';
-		import Avatar from '\$lib/components/avatar.svelte';
-
 		let { data } = $props();
-
-		let visible = $state(false);
 
 </script>
 
-{#if visible}
-	<Avatar />
-{/if}
 
 <div class="container">
 	<div class="profile">
-		<button style="border: none; background: none; cursor: pointer;" onclick="{() => {visible = !visible}}" aria-label="avatar">
+		<a href="/home/avatar" style="border: none; background: none; cursor: pointer;" aria-label="avatar">
 			<img class="avatar" src="{data.avatar? data.avatar : defaultAvatar}" alt="avatar">
-		</button>
+		</a>
 		<div class="email">
 			{data.user?.email}
 		</div>
