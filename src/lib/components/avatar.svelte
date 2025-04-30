@@ -1,6 +1,7 @@
 <script lang="ts">
-		import bow from "$lib/assets/avatars/accessories/accessory1.png";
-		import hat from "$lib/assets/avatars/accessories/accessory2.png";
+		import accessory1 from "$lib/assets/avatars/accessories/accessory1.png";
+		import accessory2 from "$lib/assets/avatars/accessories/accessory2.png";
+		import accessory3 from "$lib/assets/avatars/accessories/accessory3.png";
 		import eyes1 from "$lib/assets/avatars/eyes/eyes1.png";
 		import eyes2 from "$lib/assets/avatars/eyes/eyes2.png";
 		import eyes3 from "$lib/assets/avatars/eyes/eyes3.png";
@@ -9,6 +10,7 @@
 		import eyes6 from "$lib/assets/avatars/eyes/eyes6.png";
 		import eyes7 from "$lib/assets/avatars/eyes/eyes7.png";
 		import eyes8 from "$lib/assets/avatars/eyes/eyes8.png";
+		import eyes9 from "$lib/assets/avatars/eyes/eyes9.png";
 		import nose1 from "$lib/assets/avatars/noses/nose1.png";
 		import nose2 from "$lib/assets/avatars/noses/nose2.png";
 		import mouth1 from "$lib/assets/avatars/mouths/mouth1.png";
@@ -119,12 +121,12 @@
 			img: string
 		}
 
-		let accessories: Accesssory[] = [{img: bow, pos: 'left'}, {img: hat, pos: 'center'}, {img: "", pos: "center"}];
-		let eyes: Eyes[] = [{img: eyes1}, {img: eyes2}, {img: eyes3}, {img: eyes4}, {img: eyes5}, {img: eyes6}, {img: eyes7}, {img: eyes8}];
+		let accessories: Accesssory[] = [{img: accessory1, pos: 'left'}, {img: accessory2, pos: 'center'}, {img: accessory3, pos: 'center'}, {img: "", pos: "center"}];
+		let eyes: Eyes[] = [{img: eyes1}, {img: eyes2}, {img: eyes3}, {img: eyes4}, {img: eyes5}, {img: eyes6}, {img: eyes7}, {img: eyes8}, {img: eyes9}];
 		let noses: Nose[] = [{img: nose1}, {img: nose2}, {img: ""}];
 		let mouths: Mouth[] = [{img: mouth1}, {img: mouth2}, {img: mouth3}, {img: mouth4}, {img: mouth5}, {img: mouth6}, {img: mouth7}];
 
-		let selectedAccessory: Accesssory = accessories[2];
+		let selectedAccessory: Accesssory = accessories[3];
 		let selectedEyes: Eyes = eyes[0];
 		let selectedNose: Nose = noses[2];
 		let selectedMouth: Mouth = mouths[0];
