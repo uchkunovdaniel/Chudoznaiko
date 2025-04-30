@@ -24,7 +24,7 @@
 				</p>
 			</div>
 			<button class="hidden" onclick="{() => {window.location.href = `/home/animations/`}}" aria-label="animation">
-				<img src="{data.thumbnailsa[0]}" alt="animations" class="cover">
+				<img src="{data.thumbnailsa[0]}" alt="animations" class="cover" onerror="{() => {this.src = defaultAvatar}}">
 			</button>
 		</div>
 		<div class="games">

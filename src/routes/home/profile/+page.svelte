@@ -20,7 +20,7 @@
 	</div>
 	<div class="content">
 		<div class="favourites">
-			<h2 class="favlabel">Любими</h2>
+			<h2 class="favlabel">Любимо съдържание</h2>
 			<div class="favlist">
 				{#each data.favourites.thumbnails.animations.slice(0,2) as thumbnail}
 					<img src="{thumbnail}" alt="Thumbnail"/>
